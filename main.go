@@ -28,4 +28,5 @@ func main() {
 	acc2.Deposit(735.45)
 	fmt.Println("Updated acc2:", acc2)
 
+	acc1.Transfer(450, acc2)
 }
