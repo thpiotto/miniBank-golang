@@ -22,20 +22,20 @@ func main() {
 	holder2.Ocupation = "Computer Scientist"
 	holder2.Role = "Database Administrator"
 
-	fmt.Println("\nCreating a new obj BankAccount:", holder1.CompletedName())
-	var acc1 = ctrl.BankAccount{}
+	fmt.Println("\nCreating a new obj CheckingAccount:", holder1.CompletedName())
+	var acc1 = ctrl.CheckingAccount{}
 	acc1.Holder = holder1
 	acc1.Agency = 1
 	acc1.Account = 1
-	fmt.Println("New BankAccount Created:")
+	fmt.Println("New CheckingAccount Created:")
 	acc1.GeneralInfo()
 
-	fmt.Println("\nCreating a new obj BankAccount:", holder2.CompletedName())
-	var acc2 = ctrl.BankAccount{}
+	fmt.Println("\nCreating a new obj CheckingAccount:", holder2.CompletedName())
+	var acc2 = ctrl.CheckingAccount{}
 	acc2.Holder = holder2
 	acc2.Agency = 1
 	acc2.Account = 2
-	fmt.Println("New BankAccount Created:")
+	fmt.Println("New CheckingAccount Created:")
 	acc2.GeneralInfo()
 
 	fmt.Println("\nDepositing R$500.00 to acc1:", acc1.Holder.CompletedName())
@@ -50,5 +50,8 @@ func main() {
 
 	acc1.Transfer(200, &acc2)
 	acc1.GeneralInfo()
+	acc2.GeneralInfo()
+
+	ctrl.PayBillet(350, &acc2)
 	acc2.GeneralInfo()
 }
