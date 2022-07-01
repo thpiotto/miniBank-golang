@@ -2,21 +2,22 @@ package controllers
 
 import "fmt"
 
-type BankAccount struct {
+type CheckingAccount struct {
 	Agency  int
 	Account int
 	Holder  Client
 	balance float64
 }
 
-func (acc *BankAccount) GeneralInfo() {
+func (acc *CheckingAccount) GeneralInfo() {
 	fmt.Println("[Agency Number]:", acc.Agency)
 	fmt.Println("[Account]:", acc.Account)
 	fmt.Println("[Holder]:", acc.Holder.CompletedName())
 	fmt.Println("[Balance]: R$", acc.balance)
+	fmt.Println()
 }
 
-func (acc *BankAccount) Deposit(value float64) bool {
+func (acc *CheckingAccount) Deposit(value float64) bool {
 	var canDeposit bool = value > 0
 	if !canDeposit {
 		fmt.Println("Something unexpected happened.")
@@ -27,7 +28,7 @@ func (acc *BankAccount) Deposit(value float64) bool {
 	return true
 }
 
-func (acc *BankAccount) Withdraw(value float64) bool {
+func (acc *CheckingAccount) Withdraw(value float64) bool {
 	var canWithdraw bool = value > 0 && value < acc.balance
 	if !canWithdraw {
 		fmt.Println("Insufficient balance.")
@@ -38,7 +39,7 @@ func (acc *BankAccount) Withdraw(value float64) bool {
 	return true
 }
 
-func (acc *BankAccount) Transfer(value float64, accToTransfer *BankAccount) bool {
+func (acc *CheckingAccount) Transfer(value float64, accToTransfer *CheckingAccount) bool {
 	if acc.Withdraw(value) {
 		accToTransfer.Deposit(value)
 		fmt.Println("Transfer accomplished successfully!")
